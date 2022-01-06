@@ -1,0 +1,1 @@
+Nothing interesting here, just flasp sample to train how to write docker file
