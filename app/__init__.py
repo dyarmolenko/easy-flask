@@ -4,7 +4,7 @@ from flask import Flask
 from . import general
 
 
-def create_app(test_config=None):
+def create_app(test_config=None) -> Flask:
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
@@ -25,9 +25,5 @@ def create_app(test_config=None):
         pass
 
     app.register_blueprint(general.bp)
-
-    # @app.route("/healthz")
-    # def healthz():
-    #     return {"status": "Happy"}, 200
 
     return app

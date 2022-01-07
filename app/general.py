@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 
-bp = Blueprint('healthz', __name__, url_prefix='/')
+bp = Blueprint('general', __name__, url_prefix='/')
 
 @bp.route("/healthz")
 def healthz():
