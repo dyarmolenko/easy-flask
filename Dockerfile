@@ -1,16 +1,11 @@
-FROM python:3.9
-COPY /requirements.txt /requirements.txt
-RUN pip install -r requirements.txt
+FROM python:3.9-slim
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 WORKDIR /
 COPY /app /app
+COPY run.sh .
 
-ENV FLASK_APP=app
+EXPOSE 5000
 
-ENV FLASK_ENV=development
-
-ENV FLASK_RUN_HOST=0.0.0.0
-
-ENV FLASK_RUN_PORT=80
-
-CMD ["flask", "run"]
+ENTRYPOINT [ "/bin/bash", "run.sh" ]
