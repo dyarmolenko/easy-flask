@@ -2,7 +2,7 @@ import os
 
 from flask import Flask
 from . import general
-from infrastructure.db import connection
+from .infrastructure.db import connection
 
 
 def create_app(test_config=None) -> Flask:
@@ -10,6 +10,7 @@ def create_app(test_config=None) -> Flask:
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY=os.environ.get("SECRET_KEY"),
+        DATABASE=os.environ.get("DB_PATH"),
     )
 
     if test_config is None:

@@ -7,7 +7,7 @@ import click
 
 def get_db() -> Connection:
     if "db" not in g:
-        engine = create_engine("sqlite+pysqlite://{db_path}".format(db_path=current_app.config.get("DB_PATH")))
+        engine = create_engine("sqlite+pysqlite://{db_path}".format(db_path=current_app.config.get("DATABASE")))
         g.db = engine.connect()
 
     return g.db
@@ -35,6 +35,6 @@ def init_db_command():
     click.echo('Initialized the database.')
 
 
-def init_app(app: Flask):
+def init_app(app: Flask) -> None:
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
