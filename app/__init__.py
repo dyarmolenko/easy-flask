@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 from . import general
+from infrastructure.db import connection
 
 
 def create_app(test_config=None) -> Flask:
@@ -25,5 +26,7 @@ def create_app(test_config=None) -> Flask:
         pass
 
     app.register_blueprint(general.bp)
+
+    connection.init_app(app)
 
     return app
