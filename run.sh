@@ -1,5 +1,5 @@
 #! /bin/bash
 
-if [ $FLASK_ENV = "development" ]; then
+if [ "$FLASK_ENV" = "development" ]; then
     flask run
 fi
